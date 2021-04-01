@@ -1,14 +1,13 @@
 """ Main module """
 
-import os
 
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import sklearn.metrics as sm
 
-from lib.metrics import preprocess_df, remove_overlapping_objects, calculate_metrics
-from lib.plots import plot_confusion_matrix
+from utils.metrics import preprocess_df, remove_overlapping_objects, calculate_metrics
+from utils.plots import plot_confusion_matrix
 
 
 def main():
@@ -20,18 +19,17 @@ def main():
     # classes = ["dog", "cat"]
 
     # DataFrames
-    actual_df = pd.read_csv("actual.csv")
+    actual_df = pd.read_csv("example\\actual.csv")
     actual_df = preprocess_df(actual_df)
 
-    detected_df = pd.read_csv("detected.csv")
+    detected_df = pd.read_csv("example\\detected.csv")
     detected_df = preprocess_df(detected_df)
-    print(detected_df.head())
     detected_df = remove_overlapping_objects(detected_df)
 
     # Calculating
     df = calculate_metrics(actual_df, detected_df, prob_thresh=0, iou_thresh=0.0)
 
-    df.to_csv("result_df.csv", index=False)
+    df.to_csv("example\\result_df.csv", index=False)
 
     # ============ Collect data for sklearn =============
     y_true = []
@@ -54,8 +52,8 @@ def main():
     y_pred = np.array(y_pred)
     y_score = np.array(y_score)
 
-    for true, pred in zip(y_true, y_pred):
-        print(true, pred)
+    # for true, pred in zip(y_true, y_pred):
+    #     print(true, pred)
 
     print("Accuracy ", 100 * (y_true == y_pred).sum() / len(y_true))
 

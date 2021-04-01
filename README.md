@@ -1,14 +1,16 @@
 # ODM
 Object Detection Metrics
 
-## Introduction
+## _I. Introduction_
 
 A Code that helps to build graphs and calculate metrics such as: **Confusion matrix, Precision, Recall, AUC ROC**
 
 
-## Instructions
+## _II. Instructions_
 
-##### Actual data
+### _II.I. Prepocessing data_
+
+##### 1) Actual data
 
 Actual data must be in the same format as in this [file](example/actual.csv)
 
@@ -21,7 +23,7 @@ Actual data must be in the same format as in this [file](example/actual.csv)
 | 0008.png | 58 | 1224 | 1117 | 1519 | cat |
 | 0008.png | 58 | 64 | 1100 | 761 | dog |
 
-##### Detected data
+##### 2) Detected data
 
 Detected data must be in the same format as in this [file](example/detected.csv)
 
@@ -33,11 +35,19 @@ Detected data must be in the same format as in this [file](example/detected.csv)
 | 0008.png | 68 | 104 | 1107 | 760 | dog | 1.0 |
 | 0008.png | 68 | 104 | 1107 | 760 | dog | 1.0 |
 
-## Requirements
+### _II.II. Run script_
 ```
-pandas
-numpy
-matplotlib
-sklearn
+python -m venv venv
+source venv/bin/activate
+python example_main.py
+```
+
+## _III. Requirements_
+```
+python > 3.6
+matplotlib > 3.3
+numpy > 1.19
+pandas > 1.1
+scikit-learn > 0.23
 ```
 
